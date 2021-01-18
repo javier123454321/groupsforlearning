@@ -1,0 +1,5 @@
+@import "./tailwind.css";
+
+p {
+    margin: 1em 0 !important;
+}
