@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\weeklysummary;
+use App\Models\Cohort;
+use App\Models\WeeklySummary;
 use Illuminate\Http\Request;
 
 class WeeklysummaryController extends Controller
@@ -24,7 +25,7 @@ class WeeklysummaryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -83,7 +84,13 @@ class WeeklysummaryController extends Controller
         //
     }
 
-    public function getLatest(){
-        return redirect('/freecodecamponehr/week/1');
+    public function getLatest()
+    {
+        $cohort = auth()->user()->cohorts[0];
+        $latestWeek = WeeklySummary::where('cohort_id', $cohort->id)->orderBy('week', 'DESC')->first();
+        if(!$latestWeek){
+            return redirect('/createsummary');
+        }
+        return redirect('/'.$cohort->name.'/week/'.$latestWeek->week);
     }
 }

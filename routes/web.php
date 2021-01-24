@@ -28,5 +28,8 @@ Route::get('/{cohort}/week/{week}', function ($cohort, $week) {
 })->middleware(['auth'])->name('weeklysummary');
 
 Route::get('/weeklysummary', [WeeklysummaryController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
+Route::get('/createsummary', function(){
+    return view('createsummary');
+})->middleware(['auth'])->name('createsummary');
 
 require __DIR__.'/auth.php';

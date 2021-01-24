@@ -17,7 +17,7 @@
                         </x-nav-link>
                     @if (!Auth::user()->cohorts->isEmpty())
                     <x-nav-link :href="route('latestsummary')" :active="request()->routeIs('weeklysummary')">
-                        {{ __('Your Weekly Summary') }}
+                        {{ __('This Week') }}
                     </x-nav-link>
                     @endif
                 </div>
@@ -73,7 +73,7 @@
             </x-responsive-nav-link>
             @if (!Auth::user()->cohorts->isEmpty())
             <x-responsive-nav-link :href="url('/'.Auth::user()->cohorts->first()->name.'/weeklysummary')" :active="request()->routeIs('weeklysummary')">
-                {{ __('Your Weekly Summary') }}
+                {{ __('This Week') }}
             </x-responsive-nav-link>
             @endif
         </div>

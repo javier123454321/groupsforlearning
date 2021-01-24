@@ -22,7 +22,7 @@ class ShowWeeklySummary extends Component
         $cohort = Cohort::where("name", $cohort)->first();
         $this->cohort = $cohort;
         $summaries = WeeklySummary::where("cohort_id", $cohort->id)
-                            ->where("week", 1)->get();
+                            ->where("week", $this->week)->get();
         foreach($summaries as $summary){
             $summary["user"] = User::find($summary->user_id);
         };

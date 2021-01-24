@@ -1,6 +1,4 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-/* .appwidth{
-    @apply  px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
-} */
+[x-cloak]{display:none}

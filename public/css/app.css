@@ -31424,9 +31424,9 @@ select {
           animation: bounce 1s infinite;
 }
 
-/* .appwidth{
-    @apply  px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
-} */
+[x-cloak]{
+  display:none
+}
 
 @media (min-width: 640px) {
   .sm\:container {
