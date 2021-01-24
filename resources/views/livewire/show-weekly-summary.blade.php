@@ -1,3 +1,17 @@
+<div class="w-full px-8 py-4 my-4 bg-white rounded-lg shadow-lg cursor-pointer hover:shadow-xl" x-data="{showcreatebox: false}">
+    <div class="flex justify-center align-center" x-show="!showcreatebox" x-on:click="showcreatebox = true">
+        <div class="w-10 h-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h1 class="ml-10 text-2xl leading-10">Add your summary</h1>
+    </div>
+        <div x-show.transition="showcreatebox" x-cloak x-on:cancel-create-summary="showcreatebox = false">
+            <livewire:create-weekly-summary />
+        </div>
+
+</div>
 @foreach($summaries as $key => $summary)
         <div class="w-full px-8 py-4 my-4 bg-white rounded-lg shadow-lg" x-data="{showreply: false, reply: ''}">
             <h2 class="text-xl font-black">Last Week's Goals</h2>
@@ -31,6 +45,4 @@
             </div>
         </div>
 @endforeach
-    {{-- <template x-for="summary in {{ $summaries }}">
-    </template> --}}
 </div>
