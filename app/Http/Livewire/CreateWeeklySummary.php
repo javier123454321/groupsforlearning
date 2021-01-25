@@ -8,6 +8,7 @@ use App\Models\WeeklySummary;
 class CreateWeeklySummary extends Component
 {
     public WeeklySummary $weekly_summary;
+    public $week;
 
     protected $rules = [
         'weekly_summary.last_goal' => 'required|text',
@@ -27,7 +28,7 @@ class CreateWeeklySummary extends Component
         $user = auth()->user();
         $this->weekly_summary['cohort_id'] = $user->cohorts[0]->id;
         $this->weekly_summary['user_id'] = $user->id;
-        $this->weekly_summary['week'] = 1;
+        $this->weekly_summary['week'] = $this->week;
         $this->weekly_summary->save();
         return redirect('weeklysummary');
     }
