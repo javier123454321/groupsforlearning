@@ -13,7 +13,7 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('weekly_summary_id')
@@ -35,6 +35,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('threads');
     }
 }

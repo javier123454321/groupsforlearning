@@ -1,4 +1,4 @@
-<div class="w-full px-8 py-4 my-4 bg-white rounded-lg shadow-lg hover:shadow-xl"
+<div class="w-full px-8 py-4 my-4 duration-300 bg-white rounded-lg shadow-lg hover:shadow-xl"
     x-data="{showcreatebox: false}"
     x-bind:class="{'cursor-pointer':!showcreatebox}"
     x-on:cancel-create-summary="showcreatebox = false; console.log('cancel')"

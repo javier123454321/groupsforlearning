@@ -10,7 +10,7 @@ class Cohort extends Model
     use HasFactory;
 
     public function users(){
-        return $this->hasMany(User::class, 'user_cohort');
+        return $this->belongsToMany(User::class);
     }
     public function summaries(){
         return $this->hasMany(WeeklySummary::class);

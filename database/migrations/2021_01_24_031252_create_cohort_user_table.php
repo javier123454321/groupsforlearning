@@ -34,6 +34,6 @@ class CreateCohortUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_cohort');
+        Schema::dropIfExists('cohort_user');
     }
 }
