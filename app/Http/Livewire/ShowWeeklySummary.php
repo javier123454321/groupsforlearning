@@ -13,19 +13,29 @@ class ShowWeeklySummary extends Component
     public $summaries;
     public $cohort;
     public $week;
+    public $userSubmission;
     public function render()
     {
         return view('livewire.show-weekly-summary');
     }
-    public function mount($cohort)
+    public function mount($cohortslug)
     {
-        $cohort = Cohort::where("name", $cohort)->first();
+        $userHasSubmitted = false;
+        $cohort = Cohort::where("slug", $cohortslug)->first();
         $this->cohort = $cohort;
         $summaries = WeeklySummary::where("cohort_id", $cohort->id)
                             ->where("week", $this->week)->get();
         foreach($summaries as $summary){
-            $summary["user"] = User::find($summary->user_id);
+            $isOwn = (Auth::user()->id === $summary->user_id);
+            $user = User::find($summary->user_id);
+            $summary["is_own"] = $isOwn;
+            $summary["user"] = $user;
+            if($isOwn){
+                $userHasSubmitted = true;
+                $this->userSubmission = $summary;
+            }
         };
+        $cohort["user_has_submitted"] = $userHasSubmitted;
         $this->summaries = $summaries;
     }
 }

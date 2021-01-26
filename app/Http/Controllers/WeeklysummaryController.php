@@ -84,6 +84,12 @@ class WeeklysummaryController extends Controller
         //
     }
 
+    public function showByWeek($slug, $week)
+    {
+        $cohortName = Cohort::where('slug', $slug)->first()->display_name;
+        return view('weeklysummary', ['slug' => $slug, 'week' => $week, 'cohortName' => $cohortName]);
+    }
+
     public function getLatest()
     {
         $cohort = auth()->user()->cohorts[0];
@@ -91,6 +97,10 @@ class WeeklysummaryController extends Controller
         if(!$latestWeek){
             return redirect('/createsummary');
         }
-        return redirect('/'.$cohort->name.'/week/'.$latestWeek->week);
+        return redirect('/'.$cohort->slug.'/week/'.$latestWeek->week);
+    }
+    public function getCreate()
+    {
+        return view('createsummary');
     }
 }

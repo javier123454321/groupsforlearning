@@ -26,6 +26,10 @@ class CreateWeeklySummary extends Component
     public function save()
     {
         $user = auth()->user();
+        if(WeeklySummary::where("user_id", $user->id)->where("week", $this->week))
+        {
+            return error_log("already did a summary report");
+        }
         $this->weekly_summary['cohort_id'] = $user->cohorts[0]->id;
         $this->weekly_summary['user_id'] = $user->id;
         $this->weekly_summary['week'] = $this->week;
