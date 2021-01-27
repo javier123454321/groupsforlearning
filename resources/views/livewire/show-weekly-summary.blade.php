@@ -49,7 +49,7 @@
             </div>
 
             <div x-show.transition="showreply" x-cloak class="mt-4 text-right">
-                <livewire:comment-component weekly="{{$userSubmission}}"/>
+                <livewire:comment-component :weekly=$userSubmission />
             </div>
         </div>
 @endIf
