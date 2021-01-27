@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn in a community</title>
     <link rel="stylesheet" href="app.min.css">
+    <link rel="icon" href="{{ URL::asset('assets/favicon.ico') }}" type="image/x-icon"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->

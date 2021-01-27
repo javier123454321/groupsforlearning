@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{ URL::asset('assets/favicon.ico') }}" type="image/x-icon"/>
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -15,9 +16,17 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RR9BV1E7T"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1RR9BV1E7T');
+        </script>
+    <style>[x-cloak]{display:none}</style>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
         </div>
     </body>

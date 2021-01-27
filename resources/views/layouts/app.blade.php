@@ -7,6 +7,7 @@
         <title>{{ config('app.name', 'Groups For Learning') }}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="icon" href="{{ URL::asset('assets/favicon.ico') }}" type="image/x-icon"/>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RR9BV1E7T"></script>
         <script>
