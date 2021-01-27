@@ -22,7 +22,12 @@ class WeeklysummaryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'cohort_id' => 1,
+            'user_id' => 1,
+            'week' => 1,
+            'last_goal' => $this->faker->paragraph(),
+            'last_achievement' => $this->faker->paragraph(),
+            'this_goal' => $this->faker->paragraph(),
         ];
     }
 }

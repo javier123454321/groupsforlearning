@@ -13,6 +13,6 @@ class WeeklysummarySeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

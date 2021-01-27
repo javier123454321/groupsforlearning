@@ -22,7 +22,9 @@ class CohortFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "slug" => $this->faker->word(),
+            "display_name" => $this->faker->sentence(),
+            "course" => $this->faker->sentence()
         ];
     }
 }
