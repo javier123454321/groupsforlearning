@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\comments;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentsFactory extends Factory

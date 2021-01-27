@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\WeeklysummaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,14 +24,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/{cohort}/week/{week}', function ($cohort, $week) {
-    return view('weeklysummary', ['cohort' => $cohort, 'week' => $week]);
-})->middleware(['auth'])->name('weeklysummary');
-
+Route::get('/{cohort}/week/{week}', [WeeklysummaryController::class, 'showByWeek'])->middleware(['auth'])->name('weeklysummary');
+Route::post('/{cohort}/week/{week}', [CommentsController::class, 'comment']);
 Route::get('/weeklysummary', [WeeklysummaryController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
+Route::get('/createsummary', [WeeklysummaryController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
 
-Route::get('/createsummary', function(){
-    return view('createsummary');
-})->middleware(['auth'])->name('createsummary');
 
 require __DIR__.'/auth.php';
