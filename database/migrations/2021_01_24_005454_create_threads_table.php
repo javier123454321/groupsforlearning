@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeeklysummariesTable extends Migration
+class CreateThreadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWeeklysummariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('weekly_summaries', function (Blueprint $table) {
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cohort_id')
                 ->constrained()
@@ -41,6 +41,6 @@ class CreateWeeklysummariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weekly_summaries');
+        Schema::dropIfExists('threads');
     }
 }

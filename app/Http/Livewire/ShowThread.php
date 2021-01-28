@@ -3,12 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cohort;
-use App\Models\WeeklySummary;
+use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class ShowWeeklySummary extends Component
+class ShowThread extends Component
 {
     public $summaries;
     public $cohort;
@@ -23,7 +23,7 @@ class ShowWeeklySummary extends Component
         $userHasSubmitted = false;
         $cohort = Cohort::where("slug", $cohortslug)->first();
         $this->cohort = $cohort;
-        $summaries = WeeklySummary::where("cohort_id", $cohort->id)
+        $summaries = Thread::where("cohort_id", $cohort->id)
                             ->where("week", $this->week)->get();
         foreach($summaries as $summary){
             $isOwn = (Auth::user()->id === $summary->user_id);

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\weeklysummary;
+use App\Models\Thread;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class WeeklysummaryFactory extends Factory
+class ThreadFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = weeklysummary::class;
+    protected $model = Thread::class;
 
     /**
      * Define the model's default state.

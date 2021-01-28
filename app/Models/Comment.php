@@ -11,6 +11,6 @@ class Comment extends Model
 
     public function host()
     {
-        return $this->belongsTo(WeeklySummary::class);
+        return $this->belongsTo(Thread::class);
     }
 }

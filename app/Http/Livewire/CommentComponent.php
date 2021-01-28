@@ -17,7 +17,7 @@ class CommentComponent extends Component
     ];
     public function mount()
     {
-        $this->allComments = Comment::where("weekly_summary_id", $this->weekly["id"])->orderBy('created_at', 'DESC')->get()->all();
+        $this->allComments = Comment::where("thread_id", $this->weekly["id"])->orderBy('created_at', 'DESC')->get()->all();
         $this->comment = new Comment();
     }
     public function render()
@@ -29,7 +29,7 @@ class CommentComponent extends Component
         $userId = auth()->user()->id;
         $summaryId = $this->weekly->id;
         $this->comment['user_id'] = $userId;
-        $this->comment['weekly_summary_id'] = $summaryId;
+        $this->comment['thread_id'] = $summaryId;
         $this->comment['body'] = $this->body;
         array_push($this->allComments, $this->comment);
         $this->comment->save();
