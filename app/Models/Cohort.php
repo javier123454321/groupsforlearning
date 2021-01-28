@@ -13,6 +13,6 @@ class Cohort extends Model
         return $this->belongsToMany(User::class);
     }
     public function summaries(){
-        return $this->hasMany(WeeklySummary::class);
+        return $this->hasMany(Thread::class);
     }
 }

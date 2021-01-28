@@ -87,7 +87,7 @@ class ThreadController extends Controller
     public function showByWeek($slug, $week)
     {
         $cohortName = Cohort::where('slug', $slug)->first()->display_name;
-        return view('thread', ['slug' => $slug, 'week' => $week, 'cohortName' => $cohortName]);
+        return view('weeklysummary', ['slug' => $slug, 'week' => $week, 'cohortName' => $cohortName]);
     }
 
     public function getLatest()
