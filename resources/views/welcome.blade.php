@@ -12,13 +12,14 @@
         <div class="flex flex-wrap justify-around px-4 py-32 shadow-md md:p-24 min-h-80 bg-gradient-to-br from-blue-100 to-purple-300" x-data="formData()" @select.window="form.course = $event.detail; $refs.commitment.focus()">
             <div class="flex flex-col items-center justify-center max-w-lg text-center">
                 <h1 class="mb-4 text-4xl font-black">You don't need a $10,000 bootcamp to learn to code.</h1>
-                <p>Education is broken. If you want to learn anything, all the resources that you need are out there <strong>FOR FREE.</strong></p>
-                <p>What bootcamps give you is structure and accountability.</p>
+                <p>Bootcamps can be useful, but if you want to learn anything, all the resources that you need are out there <strong>FOR FREE.</strong></p>
+                <p>If you need the accountability, sign up and we can help!</p>
             </div>
             <div  x-show.transition="!submitted"  class="flex flex-col lg:w-1/3" >
                 <form x-on:submit.prevent="submit()" class="flex flex-col text-left">
                     <label class="p-4 text-center text-red-900 bg-red-300 rounded-lg" x-show.transition="error" x-cloak>
                         There was an error, please try again or email me at <a class="underline" href="mailto:javier@groupsforlearning.com"> javier@groupsforlearning.com</a> to sign you up
+                        <br> You can also join our discord server here <a class="w-8" href="https://discord.gg/GBG9f6gTq3"> <img src="/assets/discord.png" alt="join discord" srcset=""> </a>
                     </label>
                     <label class="p-4 text-center text-red-900 bg-red-300 rounded-lg" x-show.transition="invalid" x-cloak>
                        Please fill out all fields
@@ -60,6 +61,11 @@
                 <div x-show.transition="submitted" x-cloak class="w-full my-12 text-center">
                     <div class="w-full p-10 mx-auto bg-gray-100 rounded shadow-lg md:w-3/4 lg:w-1/3">
                         <h2 class="text-lg font-black">Submitted. <br>We will contact you soon</h2>
+                        <br>
+                        Join our Discord!
+                        <a class="flex justify-center" href="https://discord.gg/GBG9f6gTq3">
+                            <img src="/assets/discord.png" alt="join discord" srcset="" class="w-12 hover:shadow-sm">
+                        </a>
                     </div>
                 </div>
         </div>
@@ -158,9 +164,12 @@
                 <h2 class="mt-24 text-3xl font-black text-center">Q: Why?</h2>
                 <h3 class="mt-8 text-2xl font-black text-gray-800">A: My friend came to me the other day asking about recommendation for a bootcamp. I showed him these resources, he said that he wanted the accountability. <br> This is accountability without spending 10k.</h3>
             </div>
+            <a class="flex flex-col items-center justify-center" href="https://discord.gg/GBG9f6gTq3">
+                Join our Discord!
+                <img src="/assets/discord.png" alt="join discord" srcset="" class="w-12">
+            </a>
         </div>
     </section>
-</body>
 <script>
     function formData(){
         return {
