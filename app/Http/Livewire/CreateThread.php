@@ -21,7 +21,7 @@ class CreateThread extends Component
     }
     public function render()
     {
-        return view('livewire.create-weekly-summary');
+        return view('livewire.create-thread');
     }
     public function save()
     {
