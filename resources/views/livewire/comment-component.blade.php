@@ -4,6 +4,7 @@
     <button class="w-24 px-4 py-2 bg-gray-200 rounded" x-on:click="showreply = false">Cancel</button>
     <button class="w-24 px-4 py-2 text-white bg-purple-700 rounded disabled:opacity-50 disabled:text-gray-50" type="submit" {{ strlen($body) == 0 ? 'disabled':''}}>Send</button>
 </form>
+<h3 class="text-left text-gray-600">Recent Comments</h3>
 @foreach($allComments as $key => $postComment)
     <div class="p-4 mt-4 text-left rounded-lg bg-purple-50" wire:key="{{$key}}">
         <div class="">{{$postComment['body']}}</div>
