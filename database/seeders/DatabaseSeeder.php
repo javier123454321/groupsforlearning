@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                 "cohort_id" => 1,
                 "user_id" => $index
                 ]);
-            \App\Models\Thread::factory()->create(["user_id" => $index]);
+            \App\Models\Thread::factory()->create(["user_id" => $index, "cohort_id" => 1]);
         }
     }
 }

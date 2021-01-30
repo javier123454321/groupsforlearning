@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class ShowWeeklysummary extends Component
+class ShowWeeklySummary extends Component
 {
     public $summaries;
     public $cohort;
