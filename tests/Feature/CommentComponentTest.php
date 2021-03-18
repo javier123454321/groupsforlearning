@@ -37,17 +37,9 @@ class CommentComponentTest extends TestCase
 
     public function test_user_gets_redirected_to_their_summary()
     {
-        [ "user" => $user ] = $this->setupTestContext();
+        [ "user" => $user, "cohort" => $cohort, "thread" => $thread ] = $this->setupTestContext();
         $response = $this->actingAs($user)
             ->get('/weeklysummary');
-        $response->assertStatus(302);
-    }
-    public function test_user_sees_their_summary_displayed()
-    {
-        ['user' => $user, 'cohort' => $cohort, 'thread' => $thread] = $this->setupTestContext();
-        echo '/' . $cohort->slug . '/week/' . $thread->week;
-        echo $thread;
-        $response = $this->actingAs($user)
-            ->get('/' . $cohort->slug . '/week/' . $thread->week)->assertSeeLivewire('create-weekly-summary');
+        $response->assertRedirect('/' . $cohort->slug . '/week/' . $thread->week);
     }
 }
