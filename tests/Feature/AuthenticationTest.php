@@ -5,11 +5,13 @@ namespace Tests\Feature;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
+    use DatabaseMigrations;
 
     public function test_login_screen_can_be_rendered()
     {
@@ -43,5 +45,13 @@ class AuthenticationTest extends TestCase
         $response = $this->get('/dashboard');
         $response->assertStatus(302);
         $response->assertRedirect('/login');
+    }
+    public function test_logged_in_user_sees_dashboard()
+    {
+        $this->withoutExceptionHandling();
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/dashboard');
+        $response->assertStatus(200);
     }
 }
