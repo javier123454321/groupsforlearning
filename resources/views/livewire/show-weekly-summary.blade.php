@@ -16,7 +16,7 @@
         <h1 class="ml-10 text-2xl leading-10">Add your summary</h1>
     </div>
         <div x-show.transition="showcreatebox" x-cloak>
-            <livewire:create-weekly-summary week="{{ $week }}"/>
+            <livewire:create-thread week="{{ $week }}"/>
         </div>
 </div>
 @else
