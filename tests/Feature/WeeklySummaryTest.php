@@ -10,7 +10,7 @@ use App\Models\Thread;
 use App\Models\Cohort;
 use Tests\TestCase;
 
-class CommentComponentTest extends TestCase
+class WeeklySummaryTest extends TestCase
 {
     use RefreshDatabase;
     /**
