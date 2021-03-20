@@ -18,7 +18,8 @@ class CommentsComponent extends Component
     ];
     public function mount()
     {
-        $allComments = Comment::where("thread_id", $this->weekly["id"])->orderBy('created_at', 'DESC')->get()->all();
+        $allComments = Comment::where("thread_id", $this->weekly["id"])
+            ->where("parent_comment", null)->orderBy('created_at', 'DESC')->get()->all();
         foreach($allComments as $comment)
         {
             $comment["user"] = $comment->user()->first();
