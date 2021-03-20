@@ -1,5 +1,5 @@
 <div>
-    <div class="p-4 mt-4 text-left rounded-lg bg-purple-50" x-data="{editing: false, body: '{{$comment['body']}}'}" >
+    <div class="p-4 mt-2 text-left rounded-lg bg-purple-50" x-data="{editing: false, body: '{{$comment['body']}}'}" >
         <p>{{$comment['body']}}</p>
         <div class="text-sm text-gray-800 font-extralight">
             By: {{isset($comment['user']['name']) ? $comment['user']['name'] : 'unknown'}}
@@ -9,5 +9,10 @@
                 </button>
             @endif
         </div>
+    </div>
+    <div class="pl-4">
+    @foreach($children as $key => $child)
+        <livewire:comment-component :comment="$child">
+    @endforeach
     </div>
 </div>

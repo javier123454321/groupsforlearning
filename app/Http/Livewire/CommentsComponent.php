@@ -23,7 +23,6 @@ class CommentsComponent extends Component
         foreach($allComments as $comment)
         {
             $comment["user"] = $comment->user()->first();
-            Log::debug($comment['body']);
         }
         $this->allComments = $allComments;
         $this->comment = new Comment();
