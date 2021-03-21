@@ -25,7 +25,7 @@
         </div>
         <div class="border-l-2">
             @foreach ($children as $key => $child)
-                <livewire:comment-component :comment="$child" :key="time().$child->id">
+                <livewire:comment-component :comment="$child" :key="'comment-' . $child->id">
             @endforeach
         </div>
     </div>

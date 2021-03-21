@@ -7,7 +7,6 @@
     </form>
     <h3 class="text-left text-gray-600">Recent Comments</h3>
     @foreach ($allComments as $key => $postComment)
-            {{json_encode(time() . $postComment['id'])}}
-        <livewire:comment-component wire:key="time().$postComment['id']" :comment="$postComment" />
+        <livewire:comment-component :key="'comment-'.$postComment['id']" :comment="$postComment" />
     @endforeach
 </div>
