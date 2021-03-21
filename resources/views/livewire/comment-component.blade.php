@@ -29,8 +29,8 @@
             </div>
         </div>
         <div x-show.transition="replying" x-on:replied-to-comment.window="replying = false">
-            <textarea class="w-full px-2 mt-2 bg-gray-100 border border-purple-300 rounded-lg" wire:model="reply"
-                placeholder="Reply..." wire:model.defer="reply.body"></textarea>
+            <textarea class="w-full px-2 mt-2 bg-gray-100 border border-purple-300 rounded-lg"
+                placeholder="Reply..." wire:model.defer="reply"></textarea>
             <button class="w-24 px-4 py-2 mr-2 bg-gray-200 rounded" x-on:click="replying = false">Cancel</button>
             <button class="w-24 px-4 py-2 text-white bg-purple-700 rounded disabled:opacity-50 disabled:text-gray-50"
                 wire:click="reply()" type="submit">Save</button>
