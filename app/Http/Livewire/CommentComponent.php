@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use Livewire\Component;
-use Illuminate\Support\Facades\Log;
 
 class CommentComponent extends Component
 {
@@ -30,8 +29,6 @@ class CommentComponent extends Component
         $comment["body"] = $this->reply;
         $comment["thread_id"] = $this->comment->thread_id;
         $comment["user_id"] = auth()->user()->id;
-        Log::debug("COMMENT: ". $this->comment->id . " CHILDREN: ");
-        Log::debug($this->children);
         if($comment->save())
         {
             $comment->refresh();
@@ -44,7 +41,8 @@ class CommentComponent extends Component
     {
         if($this->comment['user_id'] == auth()->user()->id)
         {
-            if($this->comment->save()){
+            if($this->comment->save())
+            {
                 $this->dispatchBrowserEvent('comment-edited');
             };
         }
