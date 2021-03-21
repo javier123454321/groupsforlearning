@@ -14,22 +14,25 @@ class CommentsComponent extends Component
     public $body;
 
     protected $rules = [
-        'comments.body' => 'required|text',
+        'comments' => 'required',
     ];
+    public function render()
+    {
+        return view('livewire.comments-component');
+    }
     public function mount()
     {
         $allComments = Comment::where("thread_id", $this->weekly["id"])
-            ->where("parent_comment", null)->orderBy('created_at', 'DESC')->get()->all();
+            ->where("parent_comment", null)
+            ->orderBy('created_at', 'DESC')
+            ->get()->all();
         foreach($allComments as $comment)
         {
             $comment["user"] = $comment->user()->first();
         }
         $this->allComments = $allComments;
         $this->comment = new Comment();
-    }
-    public function render()
-    {
-        return view('livewire.comments-component');
+            Log::debug(json_encode($this->allComments));
     }
     public function save()
     {
@@ -44,10 +47,4 @@ class CommentsComponent extends Component
             $this->emit('commented');
         };
     }
-    public function edit($comment, $body)
-    {
-        Log::debug($comment);
-        return true;
-    }
-
 }

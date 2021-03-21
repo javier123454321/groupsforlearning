@@ -21,7 +21,7 @@ class CommentComponent extends Component
     {
         $this->children = Comment::where("parent_comment", $this->comment->id)->orderBy('created_at', 'DESC')->get()->all();
     }
-    public function save()
+    public function update()
     {
         if($this->comment['user_id'] == auth()->user()->id)
         {
