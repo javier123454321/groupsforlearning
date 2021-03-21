@@ -53,17 +53,22 @@
         </div>
 
         <div x-show.transition="showreply" x-cloak class="mt-4 text-right">
-            <livewire:comments-component :weekly=$userSubmission :key="$userSubmission->id"/>
+            <livewire:comments-component :weekly=$userSubmission :key="$userSubmission->id" />
         </div>
     </div>
 @endIf
 
 <div id="navigator" class="flex justify-between my-4">
-    <a href="{{ '/' . $cohort->slug . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full">
+    @if($week > 1)
+        <a href="{{ '/' . $cohort->slug . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full"
+            >
         << prev</a>
-            <a href="{{ '/' . $cohort->slug . '/week/' . ($week + 1) }}"
-                class="px-4 py-1 bg-white rounded rounded-full">next
-                >></a>
+    @else
+        <span class="px-4 py-1 text-gray-600 bg-gray-200 rounded rounded-full"><< prev</span>
+    @endif
+    <a href="{{ '/' . $cohort->slug . '/week/' . ($week + 1) }}"
+        class="px-4 py-1 bg-white rounded rounded-full">next
+        >></a>
 </div>
 @foreach ($summaries as $key => $summary)
     @if (!$summary['is_own'])
@@ -94,7 +99,7 @@
 
             </div>
             <div x-show.transition="showreply" x-cloak class="mt-4 text-right">
-                <livewire:comments-component :weekly="$summary" :key="$summary->id"/>
+                <livewire:comments-component :weekly="$summary" :key="$summary->id" />
             </div>
         </div>
     @endif
