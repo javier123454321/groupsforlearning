@@ -46,11 +46,6 @@ class CommentsComponent extends Component
     }
     public function edit($comment, $body)
     {
-        if($comment['user'] == auth()->user())
-        {
-            $comment['body'] = $body;
-
-        }
         Log::debug($comment);
         return true;
     }

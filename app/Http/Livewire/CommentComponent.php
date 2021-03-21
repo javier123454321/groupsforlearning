@@ -10,6 +10,9 @@ class CommentComponent extends Component
 {
     public $comment;
     public $children;
+    protected $rules = [
+        'comment.body' => 'required|text',
+    ];
     public function render()
     {
         return view('livewire.comment-component');
@@ -17,5 +20,14 @@ class CommentComponent extends Component
     public function mount()
     {
         $this->children = Comment::where("parent_comment", $this->comment->id)->orderBy('created_at', 'DESC')->get()->all();
+    }
+    public function save()
+    {
+        if($this->comment['user_id'] == auth()->user()->id)
+        {
+            if($this->comment->save()){
+                $this->dispatchBrowserEvent('comment-edited');
+            };
+        }
     }
 }
