@@ -19,13 +19,13 @@
                 <button class="w-24 px-4 py-2 mr-2 bg-gray-200 rounded" x-on:click="editing = false">Cancel</button>
                 <button
                     class="w-24 px-4 py-2 text-white bg-purple-700 rounded disabled:opacity-50 disabled:text-gray-50"
-                    wire:click="save()"
+                    wire:click="update()"
                     type="submit">Save</button>
             </div>
         </div>
         <div class="border-l-2">
             @foreach ($children as $key => $child)
-                <livewire:comment-component :comment="$child">
+                <livewire:comment-component :comment="$child" :key="time().$child->id">
             @endforeach
         </div>
     </div>

@@ -31,18 +31,18 @@ class CommentsComponent extends Component
             $comment["user"] = $comment->user()->first();
         }
         $this->allComments = $allComments;
-        $this->comment = new Comment();
-            Log::debug(json_encode($this->allComments));
+        Log::debug(count($this->allComments));
     }
     public function save()
     {
         $userId = auth()->user()->id;
         $summaryId = $this->weekly->id;
-        $this->comment['user_id'] = $userId;
-        $this->comment['thread_id'] = $summaryId;
-        $this->comment['body'] = $this->body;
-        if($this->comment->save()){
-            array_unshift($this->allComments, $this->comment);
+        $comment = new Comment();
+        $comment['user_id'] = $userId;
+        $comment['thread_id'] = $summaryId;
+        $comment['body'] = $this->body;
+        array_unshift($this->allComments, $comment);
+        if($comment->save()){
             $this->body = '';
             $this->emit('commented');
         };

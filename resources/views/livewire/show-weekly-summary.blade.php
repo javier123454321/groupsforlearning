@@ -53,7 +53,7 @@
         </div>
 
         <div x-show.transition="showreply" x-cloak class="mt-4 text-right">
-            <livewire:comments-component :weekly=$userSubmission />
+            <livewire:comments-component :weekly=$userSubmission :key="$userSubmission->id"/>
         </div>
     </div>
 @endIf
@@ -94,7 +94,7 @@
 
             </div>
             <div x-show.transition="showreply" x-cloak class="mt-4 text-right">
-                <livewire:comments-component :weekly="$summary" />
+                <livewire:comments-component :weekly="$summary" :key="$summary->id"/>
             </div>
         </div>
     @endif
