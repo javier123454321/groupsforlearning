@@ -59,9 +59,9 @@
 @endIf
 
 <div id="navigator" class="flex justify-between my-4">
-    <a href="{{ '/' . $cohort->name . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full">
+    <a href="{{ '/' . $cohort->slug . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full">
         << prev</a>
-            <a href="{{ '/' . $cohort->name . '/week/' . ($week + 1) }}"
+            <a href="{{ '/' . $cohort->slug . '/week/' . ($week + 1) }}"
                 class="px-4 py-1 bg-white rounded rounded-full">next
                 >></a>
 </div>
