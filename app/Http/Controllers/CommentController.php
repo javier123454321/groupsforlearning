@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CommentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comments
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(comments $comments)
+    public function show(comment $comment)
     {
         //
     }
@@ -55,7 +55,7 @@ class CommentsController extends Controller
      * @param  \App\Models\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function edit(comments $comments)
+    public function edit(comment $comment)
     {
         //
     }
@@ -67,7 +67,7 @@ class CommentsController extends Controller
      * @param  \App\Models\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comments $comments)
+    public function update(Request $request, comment $comment)
     {
         //
     }
@@ -78,7 +78,7 @@ class CommentsController extends Controller
      * @param  \App\Models\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comments $comments)
+    public function destroy(comment $comment)
     {
         //
     }

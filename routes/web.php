@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ThreadController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->middleware(['auth'])->name('weeklysummary');
-Route::post('/{cohort}/week/{week}', [CommentsController::class, 'comment']);
+Route::post('/{cohort}/week/{week}', [CommentController::class, 'comment']);
 Route::get('/weeklysummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
 Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
 

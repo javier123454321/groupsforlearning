@@ -9,7 +9,11 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function host()
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function thread()
     {
         return $this->belongsTo(Thread::class);
     }

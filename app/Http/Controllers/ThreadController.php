@@ -92,7 +92,7 @@ class ThreadController extends Controller
 
     public function getLatest()
     {
-        $cohort = auth()->user()->cohorts[0];
+        $cohort = auth()->user()->cohorts->first();
         $latestWeek = Thread::where('cohort_id', $cohort->id)->orderBy('week', 'DESC')->first();
         if(!$latestWeek){
             return redirect('/createsummary');

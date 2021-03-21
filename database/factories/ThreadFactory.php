@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Thread;
+use App\Models\Cohort;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ThreadFactory extends Factory
@@ -22,8 +24,8 @@ class ThreadFactory extends Factory
     public function definition()
     {
         return [
-            'cohort_id' => 1,
-            'user_id' => 1,
+            'cohort_id' =>  Cohort::factory()->create()->id,
+            'user_id' => User::factory()->create()->id,
             'week' => 1,
             'last_goal' => $this->faker->paragraph(),
             'last_achievement' => $this->faker->paragraph(),
