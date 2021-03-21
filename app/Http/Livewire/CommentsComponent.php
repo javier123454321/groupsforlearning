@@ -24,25 +24,23 @@ class CommentsComponent extends Component
     {
         $allComments = Comment::where("thread_id", $this->weekly["id"])
             ->where("parent_comment", null)
-            ->orderBy('created_at', 'DESC')
-            ->get()->all();
+            ->orderBy('created_at', 'ASC')
+            ->get();
         foreach($allComments as $comment)
         {
             $comment["user"] = $comment->user()->first();
         }
         $this->allComments = $allComments;
-        Log::debug(count($this->allComments));
     }
     public function save()
     {
-        $userId = auth()->user()->id;
-        $summaryId = $this->weekly->id;
         $comment = new Comment();
-        $comment['user_id'] = $userId;
-        $comment['thread_id'] = $summaryId;
+        $comment['user_id'] = auth()->user()->id;
+        $comment['thread_id'] = $this->weekly->id;
         $comment['body'] = $this->body;
-        array_unshift($this->allComments, $comment);
         if($comment->save()){
+            $comment->refresh();
+            $this->allComments->push($comment);
             $this->body = '';
             $this->emit('commented');
         };

@@ -36,9 +36,11 @@
                 wire:click="reply()" type="submit">Save</button>
         </div>
         <div class="border-l-2">
+            @if(count($children) > 0)
             @foreach ($children as $key => $child)
                 <livewire:comment-component :comment="$child" :key="'comment-' . $child->id">
             @endforeach
+            @endif
         </div>
     </div>
 </div>

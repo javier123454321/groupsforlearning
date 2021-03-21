@@ -21,7 +21,7 @@ class CommentComponent extends Component
     }
     public function mount()
     {
-        $this->children = Comment::where("parent_comment", $this->comment->id)->orderBy('created_at', 'DESC')->get()->all();
+        $this->children = Comment::where("parent_comment", $this->comment->id)->orderBy('created_at', 'ASC')->get();
     }
     public function reply()
     {
@@ -30,10 +30,13 @@ class CommentComponent extends Component
         $comment["body"] = $this->reply;
         $comment["thread_id"] = $this->comment->thread_id;
         $comment["user_id"] = auth()->user()->id;
+        Log::debug("COMMENT: ". $this->comment->id . " CHILDREN: ");
+        Log::debug($this->children);
         if($comment->save())
         {
+            $comment->refresh();
             $this->reply = '';
-            array_unshift($this->children, $comment);
+            $this->children->push($comment);
             $this->dispatchBrowserEvent('replied-to-comment');
         }
     }
