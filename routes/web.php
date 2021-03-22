@@ -26,9 +26,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->middleware(['auth'])->name('weeklysummary');
 Route::post('/{cohort}/week/{week}', [CommentController::class, 'comment']);
-Route::get('/weeklysummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
+Route::get('/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
 Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
-Route::get('/createcohort', function() { return view('create-cohort'); });
+Route::get('/createcohort', function() { return view('create-cohort'); })->middleware(['auth'])->name('createcohort');
 
 
 require __DIR__.'/auth.php';

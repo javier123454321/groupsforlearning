@@ -90,9 +90,9 @@ class ThreadController extends Controller
         return view('weeklysummary', ['slug' => $slug, 'week' => $week, 'cohortName' => $cohortName]);
     }
 
-    public function getLatest()
+    public function getLatest(string $cohort)
     {
-        $cohort = auth()->user()->cohorts->first();
+        $cohort = Cohort::where("slug", $cohort)->first();
         $latestWeek = Thread::where('cohort_id', $cohort->id)->orderBy('week', 'DESC')->first();
         if(!$latestWeek){
             return redirect('/createsummary');
