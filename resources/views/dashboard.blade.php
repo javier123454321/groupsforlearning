@@ -8,7 +8,7 @@
                 <div class="p-6 bg-white border-b border-gray-200 sm:rounded-b-lg">
                     <div class="flex justify-between">
                         <h2 class="text-2xl font-black">Your Cohorts:</h2>
-                            <a class="px-4 py-2 bg-purple-600 rounded-lg text-gray-50" href="/createcohort">Create Cohort</a>
+                        <a class="px-4 py-2 bg-purple-600 rounded-lg text-gray-50" href="/createcohort">Create Cohort</a>
                     </div>
                     <h3 class="text-xl font-black text-gray-600">{{ (Auth::user()->cohorts->first() ? Auth::user()->cohorts->first()->name : '')}}</h3>
                     @foreach(Auth::user()->cohorts as $key => $cohort)
