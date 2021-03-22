@@ -28,6 +28,7 @@ Route::get('/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->mi
 Route::post('/{cohort}/week/{week}', [CommentController::class, 'comment']);
 Route::get('/weeklysummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
 Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
+Route::get('/createcohort', function() { return view('livewire.create-cohort-component'); });
 
 
 require __DIR__.'/auth.php';
