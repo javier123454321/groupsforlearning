@@ -16,7 +16,7 @@ class CreateCohortsTable extends Migration
         Schema::create('cohorts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('display_name');
             $table->string('course');
         });

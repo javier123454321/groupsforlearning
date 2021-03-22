@@ -82,4 +82,8 @@ class CohortController extends Controller
     {
         //
     }
+     public function showCreateCohortView()
+     {
+         return view("livewire.create-cohort-component")
+     }
 }
