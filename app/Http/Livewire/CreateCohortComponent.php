@@ -25,6 +25,11 @@ class CreateCohortComponent extends Component
         $cohort["display_name"] = $this->displayName;
         $cohort["course"] = $this->course;
         $cohort["slug"] = str_replace(" ", "-", $this->displayName);
-        $cohort->save();
+        if($cohort->save())
+        {
+            return redirect()->to("/" . $cohort["slug"] . "/week/1");
+        } else {
+            die();
+        };
     }
 }
