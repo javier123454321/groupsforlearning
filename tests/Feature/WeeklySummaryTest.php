@@ -39,7 +39,7 @@ class WeeklySummaryTest extends TestCase
     {
         [ "user" => $user, "cohort" => $cohort, "thread" => $thread ] = $this->setupTestContext();
         $response = $this->actingAs($user)
-            ->get('/weeklysummary');
+            ->get('/' .$cohort->slug . '/latestsummary');
         $response->assertRedirect('/' . $cohort->slug . '/week/' . $thread->week);
     }
 }
