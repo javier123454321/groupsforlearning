@@ -29,4 +29,17 @@ class CreateCohortTest extends TestCase
         $this->assertTrue(Cohort::where('display_name', 'foo')->exists());
         $this->assertTrue(Cohort::where('course', 'bar')->exists());
     }
+    /**
+     *
+     * @return void
+     */
+    public function test_after_saving_user_gets_redirected_to_summary()
+    {
+        $this->actingAs(User::factory()->create());
+        Livewire::test(CreateCohortComponent::class)
+            ->set('displayName', 'foo')
+            ->set('course', 'bar')
+            ->call('save')
+            ->assertRedirect("/foo/week/1");
+    }
 }
