@@ -15,7 +15,6 @@ class ViewCohortMembers extends Component
     }
     public function mount()
     {
-        $this->cohort = Cohort::find($this->cohort);
         $this->members = $this->cohort->users;
     }
 }
