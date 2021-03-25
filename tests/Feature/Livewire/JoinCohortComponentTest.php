@@ -4,7 +4,6 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\JoinCohortComponent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use Livewire\Livewire;
@@ -46,21 +45,5 @@ class JoinCohortComponentTest extends TestCase
         ])
             ->assertDontSee("Join")
             ->assertSee("You are a member");
-    }
-    /**
-     * When pressing join, a join request gets sent to for the cohort
-     *
-     * @return void
-     */
-    public function test_a_member_does_not_see_a_button_to_join_a_cohort()
-    {
-        $user = \App\Models\User::factory()->create();
-        $this->actingAs($user);
-        $cohort = \App\Models\Cohort::factory()->create();
-        Livewire::test(JoinCohortComponent::class, [
-            "cohort" => $cohort
-        ])
-            ->call("join");
-        $this->assertTrue(DB::)
     }
 }
