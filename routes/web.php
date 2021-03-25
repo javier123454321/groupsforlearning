@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use  App\Http\Controllers\CohortController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ThreadController;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +28,9 @@ Route::get('/dashboard', function () {
 Route::get('/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->middleware(['auth'])->name('weeklysummary');
 Route::post('/{cohort}/week/{week}', [CommentController::class, 'comment']);
 Route::get('/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
-Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
+Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne']);
 Route::get('/createcohort', function() { return view('create-cohort'); })->middleware(['auth'])->name('createcohort');
+Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
 
 
 require __DIR__.'/auth.php';
