@@ -14,7 +14,7 @@ class CommentsComponent extends Component
     public $body;
 
     protected $rules = [
-        'comments' => 'required',
+        'comment' => 'required',
     ];
     public function render()
     {
