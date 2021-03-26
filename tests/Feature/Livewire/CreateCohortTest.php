@@ -14,7 +14,7 @@ class CreateCohortTest extends TestCase
 {
     use RefreshDatabase;
     /**
-     * A basic feature test example.
+     * The Cohort component creates a new cohort on save.
      *
      * @return void
      */
