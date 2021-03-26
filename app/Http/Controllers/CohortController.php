@@ -41,12 +41,17 @@ class CohortController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\cohort  $cohort
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(cohort $cohort)
+    public function showOne(Request $request)
     {
-        //
+        $cohort = Cohort::firstWhere("slug", $request->cohort);
+        if($cohort === null)
+        {
+            return redirect("createcohort");
+        };
+        return view("cohort-page", ["cohort" => $cohort]);
     }
 
     /**
@@ -84,6 +89,6 @@ class CohortController extends Controller
     }
      public function showCreateCohortView()
      {
-         return view("livewire.create-cohort-component")
+         return view("livewire.create-cohort-component");
      }
 }

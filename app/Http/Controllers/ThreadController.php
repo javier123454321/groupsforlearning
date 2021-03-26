@@ -93,11 +93,14 @@ class ThreadController extends Controller
     public function getLatest(string $cohort)
     {
         $cohort = Cohort::where("slug", $cohort)->first();
+        if($cohort == null){
+            return redirect('/createcohort');
+        }
         $latestWeek = Thread::where('cohort_id', $cohort->id)->orderBy('week', 'DESC')->first();
         if(!$latestWeek){
-            return redirect('/createsummary');
+            return redirect('/cohorts/' . $cohort->slug . '/createsummary');
         }
-        return redirect('/'.$cohort->slug.'/week/'.$latestWeek->week);
+        return redirect('/cohorts/'.$cohort->slug.'/week/'.$latestWeek->week);
     }
     public function getCreate()
     {

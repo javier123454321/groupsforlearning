@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use  App\Http\Controllers\CohortController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ThreadController;
 use Illuminate\Support\Facades\Route;
@@ -19,16 +20,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    Route::get('/createcohort', function() { return view('create-cohort'); })->name('createcohort');
+    Route::get('/cohorts/{cohort}/createsummary', [ThreadController::class, 'getCreate'])->name('createsummary');
+});
 
-Route::get('/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->middleware(['auth'])->name('weeklysummary');
-Route::post('/{cohort}/week/{week}', [CommentController::class, 'comment']);
-Route::get('/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->middleware(['auth'])->name('latestsummary');
-Route::get('/createsummary', [ThreadController::class, 'getCreate'])->middleware(['auth'])->name('createsummary');
-Route::get('/createcohort', function() { return view('create-cohort'); })->middleware(['auth'])->name('createcohort');
+
+Route::get('/cohorts/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->name('weeklysummary');
+Route::post('/cohorts/{cohort}/week/{week}', [CommentController::class, 'comment']);
+Route::get('/cohorts/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->name('latestsummary');
+Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne']);
 
 
 require __DIR__.'/auth.php';

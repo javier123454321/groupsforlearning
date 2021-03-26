@@ -19,6 +19,7 @@ class CreateCohortsTable extends Migration
             $table->string('slug')->unique();
             $table->string('display_name');
             $table->string('course');
+            $table->boolean('is_private')->default(false);
         });
     }
 

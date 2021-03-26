@@ -40,6 +40,7 @@ class CreateCohortTest extends TestCase
             ->set('displayName', 'foo')
             ->set('course', 'bar')
             ->call('save')
-            ->assertRedirect("/foo/week/1");
+            ->assertRedirect("/cohorts/foo/week/1")
+            ->assertStatus(200);
     }
 }

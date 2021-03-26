@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\cohort;
+use App\Models\CohortRequests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CohortFactory extends Factory
+class CohortRequestsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = cohort::class;
+    protected $model = CohortRequests::class;
 
     /**
      * Define the model's default state.
@@ -21,12 +21,10 @@ class CohortFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->sentence();
-
         return [
-            "slug" => \Illuminate\Support\Str::slug($title),
-            "display_name" => $title,
-            "course" => $this->faker->sentence()
+            "is_private" => false,
+            "user_id" => \App\Models\User::factory()->create(),
+            "cohort_id" => \App\Models\Cohort::factory()->create(),
         ];
     }
 }
