@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Log;
 class CommentsComponent extends Component
 {
     public $allComments;
-    public $comment;
+    public Comment $comment;
     public $weekly;
     public $body;
 
     protected $rules = [
-        'comments' => 'required',
+        'comment' => 'required',
     ];
     public function render()
     {
@@ -26,10 +26,7 @@ class CommentsComponent extends Component
             ->where("parent_comment", null)
             ->orderBy('created_at', 'ASC')
             ->get();
-        foreach($allComments as $comment)
-        {
-            $comment["user"] = $comment->user()->first();
-        }
+
         $this->allComments = $allComments;
     }
     public function save()
