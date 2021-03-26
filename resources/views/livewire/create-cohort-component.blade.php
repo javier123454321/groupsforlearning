@@ -28,6 +28,9 @@
                 </div>
                 </div>
         </div>
+        @error('did-not-create')
+            <p><strong>There was an error processing your cohort</strong></p>
+        @enderror
         <input wire:model="courseUrl" type="url" id="course-url"
             class="mb-5 border border-purple-300 rounded-lg focus:bg-purple-50 focus:border-purple-500"
             autocomplete="off">
