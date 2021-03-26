@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comment;
+use App\Models\User;
 use Livewire\Component;
 
 class CommentComponent extends Component
 {
-    public $comment;
+    public Comment $comment;
     public $children;
     public $reply;
     protected $rules = [

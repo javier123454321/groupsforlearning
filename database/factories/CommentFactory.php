@@ -25,7 +25,7 @@ class CommentFactory extends Factory
     {
         return [
             'thread_id' => \App\Models\Thread::factory()->create(),
-            'user_id' => 1,
+            'user_id' => \App\Models\User::factory()->create(),
             'body' => $this->faker->paragraph(),
             'parent_comment' => null
         ];
