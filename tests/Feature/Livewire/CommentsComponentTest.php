@@ -12,7 +12,7 @@ class CommentsComponentTest extends TestCase
 {
     use RefreshDatabase;
     /**
-     * The Cohort component creates a new cohort on save.
+     * The comment component adds a comment on save.
      *
      * @return void
      */
