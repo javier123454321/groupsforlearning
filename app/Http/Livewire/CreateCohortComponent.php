@@ -33,9 +33,9 @@ class CreateCohortComponent extends Component
         if($cohort->save())
         {
             $cohort->users()->attach(auth()->user()->id);
-            return redirect()->to("/" . $cohort["slug"] . "/week/1");
+            return redirect()->to("/cohorts/" . $cohort["slug"] . "/week/1");
         } else {
-            die();
+            $this->addError('did-not-create', 'There was an error creating a cohort');;
         };
     }
 }
