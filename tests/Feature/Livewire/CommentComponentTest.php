@@ -3,11 +3,14 @@
 namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\CommentComponent;
+use App\Models\Comment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Log;
 use Livewire\Livewire;
 use Tests\TestCase;
+
+use function PHPUnit\Framework\assertTrue;
 
 class CommentComponentTest extends TestCase
 {
@@ -45,4 +48,26 @@ class CommentComponentTest extends TestCase
             ])
             ->assertDontSeeHtml("edit</button>");
     }
+    /**
+     * The user can reply to a comment.
+     *
+     * @return void
+     */
+    public function test_user_can_reply_to_comment()
+    {
+        $user = \App\Models\User::factory()->create();
+        $this->actingAs($user);
+        $comment = \App\Models\Comment::factory()->create();
+        Livewire::test(CommentComponent::class, ["comment" => $comment])
+            ->set("reply", "foo")
+            ->call("reply")
+            ->assertSee("foo");
+
+        assertTrue(
+            Comment::where("body", "foo")
+            ->where("parent_comment", $comment->id)
+            ->exists()
+        );
+    }
+
 }
