@@ -24,7 +24,6 @@ class ViewCohortMembersComponentTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
         $cohort = Cohort::factory()->create();
-        Log::debug($cohort);
         Livewire::test(ViewCohortMembers::class, [
             "cohort" => $cohort
             ])
