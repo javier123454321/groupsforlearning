@@ -60,13 +60,13 @@
 
 <div id="navigator" class="flex justify-between my-4">
     @if($week > 1)
-        <a href="{{ '/' . $cohort->slug . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full"
+        <a href="{{ '/cohorts/' . $cohort->slug . '/week/' . ($week - 1) }}" class="px-4 py-1 bg-white rounded rounded-full"
             >
         << prev</a>
     @else
         <span class="px-4 py-1 text-gray-600 bg-gray-200 rounded rounded-full"><< prev</span>
     @endif
-    <a href="{{ '/' . $cohort->slug . '/week/' . ($week + 1) }}"
+    <a href="{{ '/cohorts/' . $cohort->slug . '/week/' . ($week + 1) }}"
         class="px-4 py-1 bg-white rounded rounded-full">next
         >></a>
 </div>
