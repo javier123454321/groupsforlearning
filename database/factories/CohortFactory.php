@@ -22,8 +22,9 @@ class CohortFactory extends Factory
     public function definition()
     {
         $title = $this->faker->sentence();
+
         return [
-            "slug" => str_replace(" ", "-", $title),
+            "slug" => \Illuminate\Support\Str::slug($title),
             "display_name" => $title,
             "course" => $this->faker->sentence()
         ];
