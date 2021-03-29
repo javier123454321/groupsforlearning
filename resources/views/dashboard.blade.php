@@ -11,7 +11,7 @@
                         <a class="px-4 py-2 bg-purple-600 rounded-lg text-gray-50" href="{{ route('createcohort') }}">Create Cohort</a>
                     </div>
                     @foreach(Auth::user()->cohorts as $key => $cohort)
-                        <a href="{{ url('/cohorts/' . $cohort->slug . '/latestsummary') }}">
+                        <a href="{{ route('cohort.page', ['cohort' => $cohort->slug]) }}">
                             <h3 class="my-4 text-xl font-black text-gray-600">{{$cohort->display_name}}</h3>
                         </a>
                         <livewire:view-cohort-members :cohort="$cohort"/>
