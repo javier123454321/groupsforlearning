@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function(){
 Route::get('/cohorts/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->name('weeklysummary');
 Route::post('/cohorts/{cohort}/week/{week}', [CommentController::class, 'comment']);
 Route::get('/cohorts/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->name('latestsummary');
-Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne']);
+Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne'])->name('cohort.page');
 
 
 require __DIR__.'/auth.php';
