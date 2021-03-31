@@ -29,11 +29,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/cohorts/{cohort}/createsummary', [ThreadController::class, 'getCreate'])->name('createsummary');
 });
 
-
 Route::get('/cohorts/{cohort}/week/{week}', [ThreadController::class, 'showByWeek'])->name('weeklysummary');
 Route::post('/cohorts/{cohort}/week/{week}', [CommentController::class, 'comment']);
 Route::get('/cohorts/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->name('latestsummary');
 Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne'])->name('cohort.page');
-
+Route::get('/cohorts', [CohortController::class, 'index'])->name('cohorts');
 
 require __DIR__.'/auth.php';

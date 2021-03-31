@@ -18,6 +18,7 @@ class ShowWeeklySummary extends Component
     {
         return view('livewire.show-weekly-summary');
     }
+    
     public function mount($cohortslug)
     {
         $userHasSubmitted = false;
