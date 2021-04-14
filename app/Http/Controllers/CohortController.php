@@ -14,7 +14,9 @@ class CohortController extends Controller
      */
     public function index()
     {
-        //
+       return view('cohorts', [
+         "cohorts" => Auth()->user()->cohorts()->get()
+       ]);
     }
 
     /**
