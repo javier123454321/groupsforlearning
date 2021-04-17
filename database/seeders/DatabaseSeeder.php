@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory()->me()->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Cohort::factory()->create();
+        \App\Models\Cohort::factory(20)->create();
         foreach(range(1, 10) as $index)
         {
             DB::table("cohort_user")->insert([
@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
                 ]);
             \App\Models\Thread::factory()->create(["user_id" => $index, "cohort_id" => 1]);
             \App\Models\Comment::factory()->create(["user_id" => $index, "thread_id" => $index]);
+            if($index % 2 == 0)
+            {
+              DB::table("cohort_user")->insert([
+                "cohort_id" => $index,
+                "user_id" => 1
+                ]);
+            }
         }
 
         foreach(range(1, 29) as $index)

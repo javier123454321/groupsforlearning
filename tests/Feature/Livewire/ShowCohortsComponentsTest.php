@@ -22,7 +22,7 @@ class ShowCohortsComponentTest extends TestCase
         Livewire::test(ShowCohortsComponent::class, [
             "cohorts" => $cohorts
             ])
-            ->assertSee('Your Cohorts');
+            ->assertSee($cohorts[0]->display_name);
     }
 
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cohort;
+use App\Models\Cohort;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CohortController extends Controller
 {
@@ -14,8 +15,12 @@ class CohortController extends Controller
      */
     public function index()
     {
+      $userCohorts = Auth()->user()->cohorts()->get();
+      $recommendations = Cohort::get()->whereNotIn('id', $userCohorts->pluck('id'));
+      
        return view('cohorts', [
-         "cohorts" => Auth()->user()->cohorts()->get()
+         "userCohorts" => $userCohorts,
+         "recommendedCohorts" => $recommendations
        ]);
     }
 
