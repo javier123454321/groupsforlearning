@@ -18,7 +18,9 @@ class CreateCohortsTable extends Migration
             $table->timestamps();
             $table->string('slug')->unique();
             $table->string('display_name');
-            $table->string('course');
+            $table->timestamp('start_time')->nullable();
+            $table->integer('length_in_weeks')->default(4);
+            $table->string('course')->nullable();
             $table->boolean('is_private')->default(false);
         });
     }

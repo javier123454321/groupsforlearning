@@ -16,7 +16,8 @@ class CohortController extends Controller
     public function index()
     {
       $userCohorts = Auth()->user()->cohorts(8)->get();
-      $recommendations = Cohort::whereNotIn('id', $userCohorts->pluck('id'))->limit(8)->get();
+      $recommendations = Cohort::whereNotIn('id', $userCohorts->pluck('id'))
+                            ->where('start_time', '>', now())->limit(8)->get();
       
        return view('cohorts', [
          "userCohorts" => $userCohorts,
