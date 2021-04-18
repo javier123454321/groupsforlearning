@@ -40,8 +40,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function cohorts()
+    public function cohorts(int $limit = 0)
     {
+        if($limit > 0)
+        {
+          return $this->belongsToMany(Cohort::class, 'cohort_user')->limit($limit);
+        }
         return $this->belongsToMany(Cohort::class, 'cohort_user');
     }
 }

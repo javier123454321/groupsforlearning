@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory()->me()->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Cohort::factory(20)->create();
-        foreach(range(1, 10) as $index)
+        \App\Models\Cohort::factory(15)->create();
+        foreach(range(1, 15) as $index)
         {
             DB::table("cohort_user")->insert([
                 "cohort_id" => 1,
