@@ -17,7 +17,12 @@ class CohortController extends Controller
     {
       $userCohorts = Auth()->user()->cohorts(8)->get();
       $recommendations = Cohort::whereNotIn('id', $userCohorts->pluck('id'))
-                            ->where('start_time', '>', now())->limit(8)->get();
+                            ->where(function($query){
+                              $query->where('start_time', '>', now())
+                              ->orWhere('start_time', null);
+                            })
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(8)->get();
       
        return view('cohorts', [
          "userCohorts" => $userCohorts,

@@ -16,7 +16,7 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     @if (!Auth::user()->cohorts->isEmpty())
-                    <x-nav-link :href="route('cohorts')" :active="request()->routeIs('weeklysummary')">
+                    <x-nav-link :href="route('cohorts')" :active="request()->routeIs('cohorts')">
                         {{ __('My Cohorts') }}
                     </x-nav-link>
                     @endif
