@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cohort;
+use App\Models\Cohort;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CohortController extends Controller
 {
@@ -14,7 +15,34 @@ class CohortController extends Controller
      */
     public function index()
     {
-        //
+      $userCohorts = [];
+      $recommendations = [];
+
+      if(Auth()->user())
+      {
+        $userCohorts = Auth()->user()->cohorts(8)->get();
+        $recommendations = Cohort::whereNotIn('id', $userCohorts->pluck('id'))
+                            ->where(function($query){
+                              $query->where('start_time', '>', now())
+                              ->orWhere('start_time', null);
+                            })
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(8)->get();
+      
+      } else {
+        $recommendations = Cohort::where('start_time', '>', now())
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(8)->get();
+      }
+      $ongoing = Cohort::where('start_time', '<', now())
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(4)->get();
+
+       return view('cohorts', [
+         "userCohorts" => $userCohorts,
+         "recommendedCohorts" => $recommendations,
+         "ongoingCohorts" => $ongoing
+       ]);
     }
 
     /**
