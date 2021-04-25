@@ -61,4 +61,22 @@ class CohortIndexPageTest extends TestCase
         $response->assertSeeLivewire('show-cohorts-component');
         $response->assertSee($cohorts[0]->display_name);
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function test_a_user_sees_a_list_of_groups_that_are_ongoing()
+    {
+        $user = \App\Models\User::factory()->me()->create();
+        $cohorts = \App\Models\Cohort::factory(4)->create();
+
+        $this->actingAs($user);
+
+        $cohorts[0]->start_time =Carbon::yesterday();
+        $cohorts[0]->save();
+        $response = $this->get('/cohorts');
+        $response->assertSeeLivewire('show-cohorts-component');
+        $response->assertSee($cohorts[0]->display_name);
+    }
 }

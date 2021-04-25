@@ -6,9 +6,11 @@
       {{$cohort->display_name}}
       <div>
         <span class="text-gray-600 text-sm font-normal">members: {{$cohort->users->count()}}</span>
+        @auth
         @if($cohort->users()->get()->contains(Auth()->user()->id))
           <p class="text-gray-600 text-sm font-normal">You are a member</p>
         @endif
+        @endauth
         <div>
           @if($cohort->start_time)
             @if($cohort->start_time > Carbon\Carbon::now())
