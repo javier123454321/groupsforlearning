@@ -29,10 +29,19 @@ class CohortController extends Controller
                             ->orderBy('start_time', 'DESC')
                             ->limit(8)->get();
       
+      } else {
+        $recommendations = Cohort::where('start_time', '>', now())
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(8)->get();
       }
+      $ongoing = Cohort::where('start_time', '<', now())
+                            ->orderBy('start_time', 'DESC')
+                            ->limit(4)->get();
+
        return view('cohorts', [
          "userCohorts" => $userCohorts,
-         "recommendedCohorts" => $recommendations
+         "recommendedCohorts" => $recommendations,
+         "ongoingCohorts" => $ongoing
        ]);
     }
 

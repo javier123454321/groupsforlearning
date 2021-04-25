@@ -48,6 +48,16 @@ class CohortIndexPageTest extends TestCase
      *
      * @return void
      */
+    public function test_a_non_user_doesnt_see_a_your_cohorts_section()
+    {
+        $response = $this->get('/cohorts');
+        $response->assertDontSee('Your Cohorts');
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function test_a_user_sees_a_list_of_groups_not_yet_started()
     {
         $user = \App\Models\User::factory()->me()->create();

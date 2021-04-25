@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory()->me()->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Cohort::factory(15)->create();
+        \App\Models\Cohort::factory(15)->create(["start_time" => Carbon::create(2021, 10, 10, 10)]);
         foreach(range(1, 15) as $index)
         {
             DB::table("cohort_user")->insert([
@@ -38,5 +39,6 @@ class DatabaseSeeder extends Seeder
         {
             \App\Models\Comment::factory(10)->create(["parent_comment" => rand(0,29), "thread_id" => 1, "user_id" => rand(1 , 10), "thread_id" => $index]);
         }
+        \App\Models\Cohort::factory(15)->create(["start_time" => Carbon::now()]);
     }
 }
