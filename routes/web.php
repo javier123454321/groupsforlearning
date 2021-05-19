@@ -34,5 +34,6 @@ Route::post('/cohorts/{cohort}/week/{week}', [CommentController::class, 'comment
 Route::get('/cohorts/{cohort}/latestsummary', [ThreadController::class, 'getLatest'])->name('latestsummary');
 Route::get('/cohorts/{cohort}', [CohortController::class, 'showOne'])->name('cohort.page');
 Route::get('/cohorts', [CohortController::class, 'index'])->name('cohorts');
+Route::get('/search', [CohortController::class, 'search'])->name('search');
 
 require __DIR__.'/auth.php';

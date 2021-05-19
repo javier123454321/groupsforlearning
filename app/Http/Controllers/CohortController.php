@@ -115,6 +115,20 @@ class CohortController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+        $cohortResult = Cohort::where("display_name", 'LIKE', '%'.$query.'%')
+            ->orWhere('course','LIKE','%'.$query.'%')
+            ->get();
+        
+        return view("search-results", [
+            "query" => $query, 
+            "cohortResults" => $cohortResult
+        ]);
+    }
+
      public function showCreateCohortView()
      {
          return view("livewire.create-cohort-component");
