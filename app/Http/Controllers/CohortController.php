@@ -119,8 +119,9 @@ class CohortController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('q');
-        $cohortResult = Cohort::where("display_name", 'LIKE', '%'.$query.'%')
-            ->orWhere('course','LIKE','%'.$query.'%')
+        $queryString = str_replace(' ', '%', $query);
+        $cohortResult = Cohort::where("display_name", 'LIKE', '%'.$queryString.'%')
+            ->orWhere('course','LIKE','%'.$queryString.'%')
             ->get();
         
         return view("search-results", [
